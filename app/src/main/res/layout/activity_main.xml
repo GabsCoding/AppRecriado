@@ -11,11 +11,12 @@
     <TextView
         android:id="@+id/tvSwipe"
         android:layout_width="369dp"
-        android:layout_height="67dp"
+        android:layout_height="80dp"
+        android:lines="3"
         android:textColor="#FFFFFF"
         android:text="Perguntas:"
         android:textAlignment="center"
-        android:textSize="50dp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -59,14 +60,17 @@
         android:id="@+id/btnReset"
         android:layout_width="127dp"
         android:layout_height="67dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="240dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
         android:text="Reset"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvNao"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSwipe"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.935" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

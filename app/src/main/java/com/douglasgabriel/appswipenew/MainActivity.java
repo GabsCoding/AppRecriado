@@ -5,22 +5,28 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
     private ConstraintLayout tela;
     private TextView tvSwipe;
-    private String[] perguntas = {"?","Você gosta de ler?","Você de gosta de frutas?","Você tem certeza de sua existência?","Você é você?"};
+    private Button btnReset;
+    private String[] perguntas = {"A maior montanha do mundo é o Everest?","A lua está mais longe da terra do que o Sol?","Tatuagem é bom?","Dor é saudável?","Você é você?"};
     List<String> lista = new ArrayList<String>(Arrays.asList(perguntas));
     private TextView tvSim;
     private TextView tvNao;
     private int cont = 0;
-    private int answer = 0;
+    private int nao = 0;
+    private int sim = 0;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -28,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        btnReset = (Button) findViewById(R.id.btnReset);
         tela = (ConstraintLayout) findViewById(R.id.tela);
         tvSwipe = (TextView) findViewById(R.id.tvSwipe);
         tvSim = (TextView) findViewById(R.id.tvSim);
@@ -77,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
         if(cont >= lista.size()){
             cont = 0;
         }
-        //tvSwipe.setText(lista.toArray()[cont].toString());
         return cont;
     }
 
@@ -86,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         if (cont == -1) {
             cont = lista.size() - 1;
         }
-        //tvSwipe.setText(lista.toArray()[cont].toString());
         return cont;
     }
 
@@ -98,21 +103,25 @@ public class MainActivity extends AppCompatActivity {
 
         }
         else{
-            tvSim.setText("Reset");
-            tvNao.setText("Reset");
+            tvSim.setText("");
+            tvNao.setText("");
+            btnReset.setVisibility(View.VISIBLE);
             if((sim + nao) == 5){
-                tvSwipe.setText("Sim: "+sim+"\n Não: "+nao);
+                tvSwipe.setText("Você acertou "+sim+" Questões");
             }
-            else{
-                sim = 0;
-                nao = 0;
-                lista = new ArrayList<String>(Arrays.asList(perguntas));
-                cont = 0;
-                tvSim.setText("Sim");
-                tvNao.setText("Não");
-                tvSwipe.setText(lista.toArray()[cont].toString());
-
-            }
+            btnReset.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    btnReset.setVisibility(View.INVISIBLE);
+                    sim = 0;
+                    nao = 0;
+                    lista = new ArrayList<String>(Arrays.asList(perguntas));
+                    cont = 0;
+                    tvSim.setText("Sim");
+                    tvNao.setText("Não");
+                    tvSwipe.setText(lista.toArray()[cont].toString());
+                }
+            });
         }
     }
 }
