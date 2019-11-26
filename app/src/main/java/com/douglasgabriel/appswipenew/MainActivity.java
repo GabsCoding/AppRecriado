@@ -15,13 +15,12 @@ public class MainActivity extends AppCompatActivity {
 
     private ConstraintLayout tela;
     private TextView tvSwipe;
-    private String[] perguntas = {"Você gosta de sorvete?","Você gosta de ler?","Você de gosta de frutas?","Você tem certeza de sua existência?","Você é você?"};
+    private String[] perguntas = {"?","Você gosta de ler?","Você de gosta de frutas?","Você tem certeza de sua existência?","Você é você?"};
     List<String> lista = new ArrayList<String>(Arrays.asList(perguntas));
     private TextView tvSim;
     private TextView tvNao;
     private int cont = 0;
-    private int sim = 0;
-    private int nao = 0;
+    private int answer = 0;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -40,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
                 super.onSwipeBottom();
                 nao = nao + 1;
                 resposta();
-                //tvSwipe.setText("Não");
             }
 
             @Override
